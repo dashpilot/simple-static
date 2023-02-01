@@ -9,6 +9,51 @@
       integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
       crossorigin="anonymous"
     />
+
+    {{#if logged_in}}
+    <link
+      rel="stylesheet"
+      href="https://editscreen.vercel.app/assets/index.css"
+    />
+    <script
+      type="module"
+      crossorigin
+      src="https://editscreen.vercel.app/assets/index.js"
+    ></script>
+    <script>
+      function render(data) {
+        /*
+        let opts = {};
+        opts.type = "json";
+        opts.page = window.page;
+        opts.data = data;
+        fetch("/api/save", {
+          method: "post",
+          body: JSON.stringify(opts),
+        })
+          .then(function (response) {
+            return response.text();
+          })
+          .then(function (data) {
+            document.querySelector("#page").innerHTML = data;
+          });
+          */
+      }
+
+      cfg = {};
+      cfg.page = window.page;
+      cfg.basePath = "https://editscreen.vercel.app/";
+      cfg.imgPath = "";
+      cfg.imgWidth = "400";
+      cfg.assetsPath = "/tpl/assets/";
+      cfg.apiPath = "/api/";
+      cfg.dataPath = "/data.json";
+      cfg.buttons = ["add", "settings", "publish"];
+      cfg.settings = ["layouts"];
+      cfg.layouts = ["news", "clients", "artists"];
+      cfg.rte = [];
+    </script>
+    {{/if}}
   </head>
 
   <body>
@@ -48,5 +93,7 @@
       <h3>{{article.title}}</h3>
       {{{article.body}}} {{/if}}
     </div>
+
+    <div id="app"></div>
   </body>
 </html>
