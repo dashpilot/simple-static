@@ -57,48 +57,50 @@
   </head>
 
   <body>
-    <nav class="navbar navbar-expand-lg bg-light">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="#">Navbar</a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNav"
-          aria-controls="navbarNav"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav">
-            {{#each pages}}
-            <li class="nav-item">
-              <a class="nav-link" href="/{{slug}}">{{name}}</a>
-            </li>
-            {{/each}}
-          </ul>
+    <div id="page">
+      <nav class="navbar navbar-expand-lg bg-light">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Navbar</a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              {{#each pages}}
+              <li class="nav-item">
+                <a class="nav-link" href="/{{slug}}">{{name}}</a>
+              </li>
+              {{/each}}
+            </ul>
+          </div>
         </div>
+      </nav>
+      <div class="container mt-5">
+        {{#if page}} {{#each entries}} {{#ifEq page ../page}}
+
+        <section
+          id="{{id}}"
+          class="editable"
+          data-fields="title=txt&amp;body=rte"
+        >
+          <h3>{{title}}</h3>
+          <p>{{{body}}}</p>
+        </section>
+        {{/ifEq}} {{/each}} {{/if}}
+        <div></div>
+
+        {{#if article}}
+        <h3>{{article.title}}</h3>
+        {{{article.body}}} {{/if}}
       </div>
-    </nav>
-    <div class="container mt-5">
-      {{#if page}} {{#each entries}} {{#ifEq page ../page}}
-
-      <section
-        id="{{id}}"
-        class="editable"
-        data-fields="title=txt&amp;body=rte"
-      >
-        <h3>{{title}}</h3>
-        <p>{{{body}}}</p>
-      </section>
-      {{/ifEq}} {{/each}} {{/if}}
-      <div></div>
-
-      {{#if article}}
-      <h3>{{article.title}}</h3>
-      {{{article.body}}} {{/if}}
     </div>
 
     <div id="app"></div>
