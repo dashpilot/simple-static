@@ -21,8 +21,9 @@
       src="https://editscreen.vercel.app/assets/index.js"
     ></script>
     <script>
+      window.page = "{{page}}";
+
       function render(data) {
-        /*
         let opts = {};
         opts.type = "json";
         opts.page = window.page;
@@ -37,7 +38,6 @@
           .then(function (data) {
             document.querySelector("#page").innerHTML = data;
           });
-          */
       }
 
       cfg = {};
