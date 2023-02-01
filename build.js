@@ -14,10 +14,15 @@ Handlebars.registerHelper("ifEq", function (a, b, options) {
   return options.inverse(this);
 });
 
-const response = await fetch(
-  "https://editscreen.s3.nl-ams.scw.cloud/gerben/data.json"
-);
-const data = await response.json();
+async function fetchData() {
+  const response = await fetch(
+    "https://editscreen.s3.nl-ams.scw.cloud/gerben/data.json"
+  );
+  var data = await response.json();
+  return data;
+}
+const data = await fetchData();
+
 fs.writeFileSync("./public/data.json", JSON.stringify(data), "utf-8");
 
 // const data = JSON.parse(fs.readFileSync("./public/data.json", "utf-8"));
