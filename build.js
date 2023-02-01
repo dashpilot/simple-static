@@ -20,6 +20,9 @@ const template = Handlebars.compile(templateSrc);
 
 data.pages.forEach((item) => {
   data.page = item.slug;
+  if (item.slug == "home") {
+    item.slug == "index";
+  }
   fs.writeFileSync("./public/" + item.slug + ".html", template(data), "utf-8");
 });
 
