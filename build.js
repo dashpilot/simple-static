@@ -1,10 +1,9 @@
 const fs = require("fs");
-const path = require("path");
 const Handlebars = require("handlebars");
 
 var dir = "./public/article/";
 
-if (!path.existsSync(dir)) {
+if (!fs.existsSync(dir)) {
   fs.mkdirSync(dir, 0744);
 }
 
