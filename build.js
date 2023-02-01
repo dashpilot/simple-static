@@ -21,9 +21,9 @@ async function fetchData() {
   var data = await response.json();
   return data;
 }
-const data = await fetchData();
-
-fs.writeFileSync("./public/data.json", JSON.stringify(data), "utf-8");
+const data = fetchData().then((mydata) => {
+  fs.writeFileSync("./public/data.json", JSON.stringify(mydata), "utf-8");
+});
 
 // const data = JSON.parse(fs.readFileSync("./public/data.json", "utf-8"));
 const templateSrc = fs.readFileSync("./public/template.htm", "utf-8");
