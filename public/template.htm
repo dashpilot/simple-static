@@ -36,7 +36,8 @@
             return response.text();
           })
           .then(function (data) {
-            document.querySelector("#page").innerHTML = data;
+            // document.querySelector("#page").innerHTML = data;
+            window.location.reload();
           });
       }
 
