@@ -14,7 +14,13 @@ Handlebars.registerHelper("ifEq", function (a, b, options) {
   return options.inverse(this);
 });
 
-const data = JSON.parse(fs.readFileSync("./public/data.json", "utf-8"));
+const response = await fetch(
+  "https://editscreen.s3.nl-ams.scw.cloud/gerben/data.json"
+);
+const data = await response.json();
+fs.writeFileSync("./public/data.json", JSON.stringify(data), "utf-8");
+
+// const data = JSON.parse(fs.readFileSync("./public/data.json", "utf-8"));
 const templateSrc = fs.readFileSync("./public/template.htm", "utf-8");
 const template = Handlebars.compile(templateSrc);
 
