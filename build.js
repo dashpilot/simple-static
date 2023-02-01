@@ -1,7 +1,11 @@
 const fs = require("fs");
 const Handlebars = require("handlebars");
 
-const detailFolder = "posts";
+var dir = "./public/article/";
+
+if (!path.existsSync(dir)) {
+  fs.mkdirSync(dir, 0744);
+}
 
 Handlebars.registerHelper("ifEq", function (a, b, options) {
   if (a === b) {
