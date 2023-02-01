@@ -21,9 +21,22 @@ const template = Handlebars.compile(templateSrc);
 data.pages.forEach((item) => {
   data.page = item.slug;
   if (item.slug == "home") {
-    item.slug = "index";
+    item.slug = "";
   }
-  fs.writeFileSync("./public/" + item.slug + ".html", template(data), "utf-8");
+
+  if (item.slug == "") {
+    fs.writeFileSync("./public/index.html", template(data), "utf-8");
+  } else {
+    var dir = "./public/" + item.slug + "/";
+    if (!fs.existsSync(dir)) {
+      fs.mkdirSync(dir, 0744);
+    }
+    fs.writeFileSync(
+      "./public/" + item.slug + "/index.html",
+      template(data),
+      "utf-8"
+    );
+  }
 });
 
 data.page = false;
