@@ -12,7 +12,32 @@
   </head>
 
   <body>
-    <div class="container">
+    <nav class="navbar navbar-expand-lg bg-light">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">Navbar</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            {{#each pages}}
+            <li class="nav-item">
+              <a class="nav-link" href="{{slug}}.html">{{name}}</a>
+            </li>
+            {{/each}}
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="container mt-5">
       {{#if page}} {{#each entries}} {{#ifEq page ../page}}
       <h3>{{title}}</h3>
       <p>{{{body}}}</p>
@@ -21,8 +46,7 @@
 
       {{#if article}}
       <h3>{{article.title}}</h3>
-      <p>{{{article.body}}}</p>
-      {{/if}}
+      {{{article.body}}} {{/if}}
     </div>
   </body>
 </html>
