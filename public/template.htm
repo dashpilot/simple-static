@@ -84,8 +84,15 @@
     </nav>
     <div class="container mt-5">
       {{#if page}} {{#each entries}} {{#ifEq page ../page}}
-      <h3>{{title}}</h3>
-      <p>{{{body}}}</p>
+
+      <section
+        id="{{id}}"
+        class="editable"
+        data-fields="title=txt&amp;body=rte"
+      >
+        <h3>{{title}}</h3>
+        <p>{{{body}}}</p>
+      </section>
       {{/ifEq}} {{/each}} {{/if}}
       <div></div>
 
